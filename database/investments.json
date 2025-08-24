@@ -1,0 +1,28 @@
+[
+  {
+    "id": "3d34240d-48f2-4fab-b783-b4dc18e3fa7e",
+    "userId": "b4b45930-2de6-4ebb-b3a3-e5cc8d7b1835",
+    "planId": "1",
+    "amount": 50,
+    "daily_return": 8.75,
+    "total_earned": 175,
+    "days_remaining": 10,
+    "is_active": true,
+    "created_at": "2025-08-17T00:08:56.574Z",
+    "plan_name": "Starter AI Bot",
+    "plan_profit_percentage": 17.5
+  },
+  {
+    "id": "9811651d-e2b3-46c3-906d-0e38f0d01956",
+    "planId": "1",
+    "amount": 50,
+    "daily_return": 8.75,
+    "total_earned": 26.25,
+    "days_remaining": 27,
+    "is_active": true,
+    "created_at": "2025-08-21T18:37:34.140Z",
+    "plan_name": "Starter AI Bot",
+    "userId": "2d983f9b-1dac-4aab-a63f-3ad08e557611",
+    "plan_profit_percentage": 17.5
+  }
+]

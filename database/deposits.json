@@ -1,0 +1,16 @@
+[
+  {
+    "id": "73b4b56d-3ccb-49fb-844b-98a5e757d73c",
+    "userId": "b4b45930-2de6-4ebb-b3a3-e5cc8d7b1835",
+    "cryptocurrency": "USD",
+    "amount": 10,
+    "usd_value": 10,
+    "wallet_address": "Admin Deposit",
+    "confirmations": 1,
+    "required_confirmations": 1,
+    "status": "confirmed",
+    "isAdminDeposit": true,
+    "admin_notes": "Balance added by admin",
+    "created_at": "2025-08-18T12:43:25.983Z"
+  }
+]

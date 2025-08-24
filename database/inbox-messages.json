@@ -1,0 +1,39 @@
+[
+  {
+    "id": "welcome_undefined_1755882494450",
+    "title": "🎉 Welcome to TradePilot!",
+    "content": "Welcome to TradePilot! We're excited to have you join our community of successful crypto investors.\n\nHere's what you can expect:\n• Daily profits from automated arbitrage trading\n• Real-time market opportunities\n• 24/7 professional support\n• Active investor community\n\nYour journey to financial freedom starts now. Join our chatroom to connect with other investors and share your success!\n\nBest regards,\nThe TradePilot Team 🚀",
+    "type": "welcome",
+    "is_read": false,
+    "created_at": "2025-08-22T17:08:14.450Z"
+  },
+  {
+    "id": "afb9af05-123e-4356-a66a-b840c6908c98",
+    "userId": "2d983f9b-1dac-4aab-a63f-3ad08e557611",
+    "title": "Support Reply: Hello",
+    "content": "Your support ticket has been replied to by our admin team:\n\nDon't worry check it later",
+    "type": "support_reply",
+    "ticket_id": "8a1c7b2d-4e5f-6789-a123-b456c789d012",
+    "is_read": true,
+    "created_at": "2025-08-23T17:48:19.871Z"
+  },
+  {
+    "id": "welcome_5eea61df-8dc5-46df-836c-2909273b648b_1756042913150",
+    "userId": "5eea61df-8dc5-46df-836c-2909273b648b",
+    "title": "🎉 Welcome to Your Investment Success Journey!",
+    "content": "Congratulations on taking the first step toward financial freedom! We're thrilled to welcome you to TradePilot, where advanced technology meets profitable investing.\n\n**Your Journey Begins Now:**\n• Advanced AI technology analyzing thousands of market opportunities daily\n• Consistent profit generation through automated arbitrage strategies\n• Real-time portfolio tracking and performance analytics\n• Bank-level security protecting your investments 24/7\n• Instant access to your earnings with flexible withdrawal options\n• Professional support team dedicated to your success\n\n**Start Earning Today:**\n1. Explore our proven investment plans designed for maximum returns\n2. Choose your preferred investment amount and duration\n3. Watch your portfolio grow with our automated profit generation\n4. Withdraw your earnings anytime with complete flexibility\n\nYou've made a smart decision joining thousands of successful investors who trust TradePilot for their financial growth. Your investment dashboard is ready, and our AI systems are already identifying profitable opportunities for you.\n\n**Ready to transform your financial future?**\nYour personalized dashboard awaits with exclusive investment opportunities.\n\nTo your success,\nThe TradePilot Team 🚀",
+    "type": "welcome",
+    "is_read": true,
+    "created_at": "2025-08-24T13:41:53.150Z"
+  },
+  {
+    "id": "437eaad7-a52f-4986-bfaa-a8feb0ae164f",
+    "userId": "b4b45930-2de6-4ebb-b3a3-e5cc8d7b1835",
+    "title": "Support Reply: Hello",
+    "content": "Your support ticket has been replied to by our admin team:\n\nOkay well done you real tried ",
+    "type": "support_reply",
+    "ticket_id": "30a7dde6-0ae6-4257-91cf-f87dae6a6a17",
+    "is_read": true,
+    "created_at": "2025-08-24T21:17:11.414Z"
+  }
+]

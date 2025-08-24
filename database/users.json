@@ -1,0 +1,60 @@
+[
+  {
+    "id": "b4b45930-2de6-4ebb-b3a3-e5cc8d7b1835",
+    "username": "Joshbond",
+    "email": "adeniranj787@gmail.com",
+    "password": "$2b$10$zefy2qHn8ASvZGMFoEruLeqmdj59Z9ahd6HKdsR3IMf9LKj0DoUwS",
+    "balance": 495,
+    "referralCode": "BQ18FU",
+    "isAdmin": true,
+    "isActive": true,
+    "isVerified": true,
+    "createdAt": "2025-08-16T20:33:16.679Z",
+    "resetCode": "78336",
+    "resetCodeExpires": "2025-08-19T23:48:17.056Z",
+    "country": "Nigeria",
+    "timezone": "Africa/Lagos"
+  },
+  {
+    "id": "2d983f9b-1dac-4aab-a63f-3ad08e557611",
+    "username": "Victor ",
+    "email": "cryptoguardian10@gmail.com",
+    "password": "$2b$10$QH4lB1a/O6J3G6UxlcO2c.ePapYC.nzipBWfa9gbYjOTk6cKK5Sz2",
+    "balance": 76.25,
+    "referralCode": "PDVCZM",
+    "isAdmin": false,
+    "isActive": true,
+    "isVerified": true,
+    "createdAt": "2025-08-17T19:45:39.906Z",
+    "resetCode": "15670",
+    "resetCodeExpires": "2025-08-19T23:34:46.953Z",
+    "country": "Nigeria",
+    "timezone": "Africa/Lagos"
+  },
+  {
+    "username": "newuser",
+    "email": "newuser@test.com",
+    "password": "password123",
+    "balance": 0,
+    "referralCode": "26ACV9",
+    "referredBy": null,
+    "isAdmin": false,
+    "isActive": true,
+    "isVerified": true
+  },
+  {
+    "id": "5eea61df-8dc5-46df-836c-2909273b648b",
+    "username": "Mr Adeniran ",
+    "email": "jadeniran21@gmail.com",
+    "password": "$2b$10$LAshgKdRUY/37UxuP8Ep5OXHnjlIBMWY0pZGJYBSp02rGrchjim9K",
+    "balance": 0,
+    "referralCode": "AKCXF4",
+    "referredBy": null,
+    "isAdmin": false,
+    "isActive": true,
+    "isVerified": true,
+    "createdAt": "2025-08-24T13:41:01.097Z",
+    "country": "Nigeria",
+    "timezone": "Africa/Lagos"
+  }
+]

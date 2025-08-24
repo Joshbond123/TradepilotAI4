@@ -1,0 +1,103 @@
+[
+  {
+    "id": "5d7bbcc8-f108-4dc3-9b32-8c29d1acb254",
+    "userId": "b4b45930-2de6-4ebb-b3a3-e5cc8d7b1835",
+    "cryptocurrency": "BTC",
+    "amount": 20,
+    "usd_value": 20,
+    "wallet_address": "Wowhveveccececce",
+    "network_fee": 0,
+    "status": "approved",
+    "created_at": "2025-08-18T11:54:01.976Z",
+    "admin_notes": "Withdrawal Successful ",
+    "processed_at": "2025-08-19T23:49:48.433Z"
+  },
+  {
+    "id": "587634dc-37d8-43d2-9f36-66cc92bd1ac7",
+    "userId": "b4b45930-2de6-4ebb-b3a3-e5cc8d7b1835",
+    "cryptocurrency": "ETH",
+    "amount": 20,
+    "usd_value": 20,
+    "wallet_address": "Yirddxxxxxxx",
+    "network_fee": 0,
+    "status": "approved",
+    "created_at": "2025-08-18T13:41:26.606Z",
+    "admin_notes": "",
+    "processed_at": "2025-08-19T23:50:23.248Z"
+  },
+  {
+    "id": "8a092700-8216-4140-860e-27d009355da7",
+    "userId": "b4b45930-2de6-4ebb-b3a3-e5cc8d7b1835",
+    "cryptocurrency": "BTC",
+    "amount": 10,
+    "usd_value": 10,
+    "wallet_address": "Ugggejdjhdhdgdgdgdgd",
+    "network_fee": 0,
+    "status": "approved",
+    "created_at": "2025-08-19T23:03:41.484Z",
+    "admin_notes": "",
+    "processed_at": "2025-08-19T23:50:35.624Z"
+  },
+  {
+    "cryptocurrency": "BTC",
+    "amount": 10,
+    "wallet_address": "Fuckyouuuuuuoooooooo",
+    "network_fee": 0,
+    "userId": "b4b45930-2de6-4ebb-b3a3-e5cc8d7b1835"
+  },
+  {
+    "cryptocurrency": "BTC",
+    "amount": 10,
+    "wallet_address": "Llllllllllllllllllllllllllllll",
+    "network_fee": 0,
+    "userId": "b4b45930-2de6-4ebb-b3a3-e5cc8d7b1835",
+    "id": "withdrawal-1756047962865-3ogbcc7eq",
+    "status": "approved",
+    "created_at": "2025-08-24T15:06:02.865Z",
+    "admin_notes": "Nothing ",
+    "approved_at": "2025-08-24T15:09:23.730Z"
+  },
+  {
+    "cryptocurrency": "BTC",
+    "amount": 10,
+    "wallet_address": "Mmmmmmmmmmmmmmmmm",
+    "network_fee": 0,
+    "userId": "2d983f9b-1dac-4aab-a63f-3ad08e557611",
+    "id": "withdrawal-1756048064509-l204dkmwg",
+    "status": "pending",
+    "created_at": "2025-08-24T15:07:44.509Z"
+  },
+  {
+    "cryptocurrency": "ETH",
+    "amount": 10,
+    "wallet_address": "Wweeeeeeeeeeeeeee",
+    "network_fee": 0,
+    "userId": "b4b45930-2de6-4ebb-b3a3-e5cc8d7b1835",
+    "id": "withdrawal-1756048609689-ipamvetlu",
+    "status": "pending",
+    "created_at": "2025-08-24T15:16:49.689Z",
+    "usd_value": 10
+  },
+  {
+    "cryptocurrency": "BTC",
+    "amount": 10,
+    "wallet_address": "Oooooooooooooooooooooooooo",
+    "network_fee": 0,
+    "userId": "b4b45930-2de6-4ebb-b3a3-e5cc8d7b1835",
+    "id": "withdrawal-1756048731480-s21dd8pef",
+    "status": "pending",
+    "created_at": "2025-08-24T15:18:51.480Z",
+    "usd_value": 10
+  },
+  {
+    "cryptocurrency": "ETH",
+    "amount": 10,
+    "wallet_address": "Ddddddddddddddddddð",
+    "network_fee": 0,
+    "userId": "b4b45930-2de6-4ebb-b3a3-e5cc8d7b1835",
+    "id": "withdrawal-1756048852752-7k0ux1gf7",
+    "status": "pending",
+    "created_at": "2025-08-24T15:20:52.752Z",
+    "usd_value": 10
+  }
+]

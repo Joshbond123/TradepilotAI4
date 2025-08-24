@@ -1,0 +1,53 @@
+[
+  {
+    "id": "1",
+    "name": "Starter AI Bot",
+    "profit_percentage": 17.5,
+    "duration_days": 30,
+    "min_deposit": 50,
+    "max_deposit": 500,
+    "description": "Perfect for beginners to start their AI arbitrage journey",
+    "features": [
+      "Real-time market scanning",
+      "Basic risk management",
+      "24/7 automated trading"
+    ],
+    "active": true,
+    "created_at": "2025-01-01T00:00:00Z"
+  },
+  {
+    "id": "2",
+    "name": "Professional AI Bot",
+    "profit_percentage": 25.2,
+    "duration_days": 60,
+    "min_deposit": 500,
+    "max_deposit": 2500,
+    "description": "Advanced AI strategies for experienced traders",
+    "features": [
+      "Multi-exchange arbitrage",
+      "Advanced algorithms",
+      "Priority support",
+      "Risk diversification"
+    ],
+    "active": true,
+    "created_at": "2025-01-01T00:00:00Z"
+  },
+  {
+    "id": "3",
+    "name": "Elite AI Bot",
+    "profit_percentage": 38.4,
+    "duration_days": 90,
+    "min_deposit": 2500,
+    "max_deposit": 10000,
+    "description": "Premium AI bot with maximum earning potential",
+    "features": [
+      "Institutional-grade algorithms",
+      "Cross-chain arbitrage",
+      "Dedicated account manager",
+      "Custom strategies",
+      "VIP support"
+    ],
+    "active": true,
+    "created_at": "2025-01-01T00:00:00Z"
+  }
+]

@@ -1,0 +1,338 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: hsl(210, 11%, 15%);
+  --foreground: hsl(0, 0%, 98%);
+  --card: hsl(210, 11%, 15%);
+  --card-foreground: hsl(0, 0%, 98%);
+  --popover: hsl(210, 11%, 15%);
+  --popover-foreground: hsl(0, 0%, 98%);
+  --primary: hsl(217, 91%, 60%);
+  --primary-foreground: hsl(0, 0%, 98%);
+  --secondary: hsl(210, 40%, 10%);
+  --secondary-foreground: hsl(0, 0%, 98%);
+  --muted: hsl(210, 40%, 10%);
+  --muted-foreground: hsl(215, 20%, 65%);
+  --accent: hsl(210, 40%, 10%);
+  --accent-foreground: hsl(0, 0%, 98%);
+  --destructive: hsl(0, 84%, 60%);
+  --destructive-foreground: hsl(0, 0%, 98%);
+  --border: hsl(217, 33%, 17%);
+  --input: hsl(217, 33%, 17%);
+  --ring: hsl(217, 91%, 60%);
+  --radius: 0.5rem;
+  
+  /* Crypto specific colors */
+  --crypto-dark: hsl(220, 55%, 8%);
+  --crypto-card: hsl(220, 33%, 15%);
+  --crypto-blue: hsl(217, 91%, 60%);
+  --crypto-green: hsl(160, 84%, 39%);
+  --profit-green: hsl(160, 87%, 40%);
+  --loss-red: hsl(0, 84%, 60%);
+  
+  /* Gradients */
+  --crypto-gradient: linear-gradient(135deg, hsl(217, 91%, 60%) 0%, hsl(160, 84%, 39%) 100%);
+  --dark-gradient: linear-gradient(135deg, hsl(220, 55%, 8%) 0%, hsl(220, 33%, 15%) 100%);
+  --hero-gradient: radial-gradient(ellipse at top, hsl(217, 91%, 60%, 0.3) 0%, transparent 50%), 
+                   radial-gradient(ellipse at bottom, hsl(160, 84%, 39%, 0.2) 0%, transparent 50%),
+                   linear-gradient(135deg, hsl(220, 55%, 8%) 0%, hsl(220, 33%, 12%) 100%);
+  
+  /* Fonts */
+  --font-sans: 'Inter', sans-serif;
+  --font-serif: Georgia, serif;
+  --font-mono: Menlo, monospace;
+}
+
+.dark {
+  --background: hsl(220, 55%, 8%);
+  --foreground: hsl(0, 0%, 98%);
+  --card: hsl(220, 33%, 15%);
+  --card-foreground: hsl(0, 0%, 98%);
+  --popover: hsl(220, 55%, 8%);
+  --popover-foreground: hsl(0, 0%, 98%);
+  --primary: hsl(217, 91%, 60%);
+  --primary-foreground: hsl(0, 0%, 98%);
+  --secondary: hsl(220, 33%, 15%);
+  --secondary-foreground: hsl(0, 0%, 98%);
+  --muted: hsl(220, 33%, 15%);
+  --muted-foreground: hsl(215, 20%, 65%);
+  --accent: hsl(220, 33%, 15%);
+  --accent-foreground: hsl(0, 0%, 98%);
+  --destructive: hsl(0, 84%, 60%);
+  --destructive-foreground: hsl(0, 0%, 98%);
+  --border: hsl(217, 33%, 17%);
+  --input: hsl(217, 33%, 17%);
+  --ring: hsl(217, 91%, 60%);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: var(--font-sans);
+  }
+  
+  /* Custom utility classes */
+  .crypto-gradient {
+    background: var(--crypto-gradient);
+  }
+  
+  .dark-gradient {
+    background: var(--dark-gradient);
+  }
+  
+  .animate-pulse-slow {
+    animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  
+  .profit-flash {
+    animation: profitFlash 1s ease-in-out;
+  }
+  
+  /* 3D Background Animation */
+  .hero-3d-bg {
+    background: var(--hero-gradient);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .hero-3d-bg::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+      conic-gradient(from 0deg at 50% 50%, transparent 0deg, hsl(217, 91%, 60%, 0.1) 90deg, transparent 180deg),
+      conic-gradient(from 180deg at 50% 50%, transparent 0deg, hsl(160, 84%, 39%, 0.1) 90deg, transparent 180deg);
+    animation: rotate3d 20s linear infinite;
+  }
+  
+  .floating-3d {
+    animation: none; /* Removed floating animation */
+    transform-style: preserve-3d;
+  }
+  
+  .floating-3d-alt {
+    animation: none; /* Removed floating animation */
+    transform-style: preserve-3d;
+  }
+  
+  /* Text Animations */
+  .fade-up {
+    animation: fadeUp 1s ease-out forwards;
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  
+  .slide-left {
+    animation: slideLeft 1s ease-out forwards;
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  
+  .slide-right {
+    animation: slideRight 1s ease-out forwards;
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  
+  .glow-pulse {
+    animation: glowPulse 2s ease-in-out infinite;
+  }
+  
+  .scale-entrance {
+    animation: scaleEntrance 1.2s ease-out forwards;
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  
+  .shimmer {
+    background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.1) 50%, transparent 100%);
+    background-size: 200% 100%;
+    animation: shimmer 3s ease-in-out infinite;
+  }
+  
+  /* Form animations */
+  .form-entrance {
+    animation: formEntrance 0.8s ease-out forwards;
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  
+  .card-float {
+    animation: none; /* Removed floating animation */
+  }
+  
+  .input-focus-glow:focus {
+    box-shadow: 0 0 0 2px hsl(217, 91%, 60%, 0.3), 0 0 20px hsl(217, 91%, 60%, 0.1);
+  }
+  
+  .button-hover-lift:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  }
+  
+  .page-transition {
+    animation: pageTransition 0.6s ease-out forwards;
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  
+  /* Staggered animations */
+  .fade-up-delay-1 { animation-delay: 0.2s; }
+  .fade-up-delay-2 { animation-delay: 0.4s; }
+  .fade-up-delay-3 { animation-delay: 0.6s; }
+  .fade-up-delay-4 { animation-delay: 0.8s; }
+  .fade-up-delay-5 { animation-delay: 1s; }
+  
+  @keyframes rotate3d {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  @keyframes float3d {
+    0%, 100% { 
+      transform: translateY(0px) rotateX(0deg) rotateY(0deg); 
+    }
+    33% { 
+      transform: translateY(-10px) rotateX(5deg) rotateY(5deg); 
+    }
+    66% { 
+      transform: translateY(5px) rotateX(-3deg) rotateY(-3deg); 
+    }
+  }
+  
+  @keyframes float3dAlt {
+    0%, 100% { 
+      transform: translateY(0px) rotateX(0deg) rotateY(0deg); 
+    }
+    50% { 
+      transform: translateY(-15px) rotateX(-5deg) rotateY(8deg); 
+    }
+  }
+  
+  @keyframes fadeUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes slideLeft {
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  @keyframes slideRight {
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  @keyframes scaleEntrance {
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  @keyframes glowPulse {
+    0%, 100% {
+      box-shadow: 0 0 20px hsl(217, 91%, 60%, 0.5);
+      transform: scale(1);
+    }
+    50% {
+      box-shadow: 0 0 30px hsl(217, 91%, 60%, 0.8), 0 0 40px hsl(160, 84%, 39%, 0.3);
+      transform: scale(1.05);
+    }
+  }
+  
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+  
+  @keyframes formEntrance {
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+  
+  @keyframes cardFloat {
+    0%, 100% { 
+      transform: translateY(0) rotateY(0deg); 
+    }
+    50% { 
+      transform: translateY(-5px) rotateY(1deg); 
+    }
+  }
+  
+  @keyframes pageTransition {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes profitFlash {
+    0%, 100% { 
+      background-color: transparent; 
+    } 
+    50% { 
+      background-color: hsl(160, 84%, 39%, 0.1); 
+    }
+  }
+  
+  /* Crypto specific background colors */
+  .bg-crypto-dark {
+    background-color: var(--crypto-dark);
+  }
+  
+  .bg-crypto-card {
+    background-color: var(--crypto-card);
+  }
+  
+  .bg-crypto-blue {
+    background-color: var(--crypto-blue);
+  }
+  
+  .bg-crypto-green {
+    background-color: var(--crypto-green);
+  }
+  
+  .text-crypto-blue {
+    color: var(--crypto-blue);
+  }
+  
+  .text-crypto-green {
+    color: var(--crypto-green);
+  }
+  
+  .text-profit-green {
+    color: var(--profit-green);
+  }
+  
+  .text-loss-red {
+    color: var(--loss-red);
+  }
+  
+  .border-crypto-blue {
+    border-color: var(--crypto-blue);
+  }
+  
+  .border-crypto-green {
+    border-color: var(--crypto-green);
+  }
+}

@@ -1,0 +1,126 @@
+{
+  "wallets": {
+    "btc": {
+      "address": "bc1q60j2ze3t8jxvqlcar8c7h9mtmelqx7uprznhzy",
+      "qr_code": "/uploads/qr-codes/undefined-1756061509921-673116287.jpg",
+      "qrCode": "/uploads/qr-codes/undefined-1756061509921-673116287.jpg",
+      "active": true
+    },
+    "eth": {
+      "address": "0x8419B4226a55DE67b45Fcbf2a277FB7e75451E07",
+      "qr_code": "/uploads/qr-codes/undefined-1756061576616-77547991.jpg",
+      "qrCode": "/uploads/qr-codes/undefined-1756061576616-77547991.jpg",
+      "active": true
+    },
+    "usdt": {
+      "address": "TU1bdYyAT95QvNG9v869LKUZWdb9FP3NCk",
+      "qr_code": "/uploads/qr-codes/undefined-1756061648704-978590282.jpg",
+      "qrCode": "/uploads/qr-codes/undefined-1756061648704-978590282.jpg",
+      "active": true
+    }
+  },
+  "withdrawal_limits": {
+    "min_withdrawal": 10,
+    "max_daily_withdrawal": 10000,
+    "processing_time_hours": 24
+  },
+  "system": {
+    "maintenance_mode": false,
+    "global_profit_multiplier": 1,
+    "referral_bonus_percentage": 10,
+    "arbitrage_refresh_rate": 30
+  },
+  "ai_chat": {
+    "enabled": true,
+    "personality": "You are a helpful TradePilot AI assistant specializing in cryptocurrency trading and arbitrage opportunities. You are knowledgeable, professional, and always aim to provide accurate information about crypto markets and trading strategies.",
+    "greeting_message": "Welcome to TradePilot! How can I assist you with your trading journey today?",
+    "api_keys": {
+      "reply_keys": [
+        {
+          "id": "f95b1748-d8df-43d5-857a-9fef88bac7ed",
+          "name": "Key 1",
+          "key": "csk-fj5hkkykwtnnttrxj35nvrx5498drpnpjvwhr2yet36k6mte",
+          "status": "active",
+          "usage_count": 61,
+          "last_used": "2025-08-24T21:14:51.420Z",
+          "created_at": "2025-08-18T23:14:10.429Z"
+        },
+        {
+          "id": "04eba439-a662-4ea0-8396-bb5e564e59ab",
+          "name": "Key 2",
+          "key": "csk-jfrvk3yett9fjhvkx94p8pmd8re8e4ndn9pc4ke64p536fce",
+          "status": "active",
+          "usage_count": 29,
+          "last_used": "2025-08-24T13:45:11.535Z",
+          "created_at": "2025-08-18T23:14:40.680Z"
+        }
+      ],
+      "summary_keys": [
+        {
+          "id": "82b1f24a-144a-4989-abe5-16101892d6be",
+          "name": "Key 3",
+          "key": "csk-fyxex8p92xrr64pw2h6nmj2mckhv4wk9ncpj93jx9n858mjh",
+          "status": "active",
+          "usage_count": 43,
+          "last_used": "2025-08-23T23:31:13.725Z",
+          "created_at": "2025-08-18T23:15:09.031Z"
+        },
+        {
+          "id": "2285dec4-051f-4852-9e33-f8bab492c793",
+          "name": "Key 4",
+          "key": "csk-8fektcjvkvpt4nyx9mpcyw9dp68p94r9wr3jcfnyfw5h6fj4",
+          "status": "active",
+          "usage_count": 13,
+          "last_used": "2025-08-24T21:14:51.079Z",
+          "created_at": "2025-08-18T23:15:32.974Z"
+        }
+      ],
+      "current_reply_index": 0,
+      "current_summary_index": 0
+    }
+  },
+  "recaptcha": {
+    "enabled": false,
+    "site_key": "6LeWfG4rAAAAADZOrjPAF3hhnQaouunJkyVIWRY8",
+    "secret_key": "6LeWfG4rAAAAAJyMavGX0PQZ75GmpRTMVQ-UaeSu"
+  },
+  "depositSettings": {
+    "BTC": {
+      "minDeposit": "0.00008",
+      "confirmations": "3"
+    },
+    "ETH": {
+      "minDeposit": "0.002",
+      "confirmations": "3"
+    },
+    "USDT": {
+      "minDeposit": "10",
+      "confirmations": "3"
+    },
+    "withdrawal_limits": {
+      "min_withdrawal": 10,
+      "fee_percentage": 0
+    }
+  },
+  "welcome_message": {
+    "title": "🎉 Welcome to Your Investment Success Journey!",
+    "content": "Congratulations on taking the first step toward financial freedom! We're thrilled to welcome you to TradePilot, where advanced technology meets profitable investing.\n\n**Your Journey Begins Now:**\n• Advanced AI technology analyzing thousands of market opportunities daily\n• Consistent profit generation through automated arbitrage strategies\n• Real-time portfolio tracking and performance analytics\n• Bank-level security protecting your investments 24/7\n• Instant access to your earnings with flexible withdrawal options\n• Professional support team dedicated to your success\n\n**Start Earning Today:**\n1. Explore our proven investment plans designed for maximum returns\n2. Choose your preferred investment amount and duration\n3. Watch your portfolio grow with our automated profit generation\n4. Withdraw your earnings anytime with complete flexibility\n\nYou've made a smart decision joining thousands of successful investors who trust TradePilot for their financial growth. Your investment dashboard is ready, and our AI systems are already identifying profitable opportunities for you.\n\n**Ready to transform your financial future?**\nYour personalized dashboard awaits with exclusive investment opportunities.\n\nTo your success,\nThe TradePilot Team 🚀"
+  },
+  "logo": {
+    "logoUrl": "/uploads/logos/logo-1756069743210-418279566.jpg",
+    "logoName": "1000590293.jpg",
+    "uploadedAt": "2025-08-24T21:09:04.220Z"
+  },
+  "callmebot": {
+    "enabled": true,
+    "admin_whatsapp_number": "+2348036869577",
+    "api_key": "6450562",
+    "notifications": {
+      "new_registration": true,
+      "user_login": true,
+      "support_ticket": true,
+      "system_activity": true,
+      "withdrawal_request": true
+    }
+  }
+}

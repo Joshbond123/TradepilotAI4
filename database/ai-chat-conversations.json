@@ -1,0 +1,64 @@
+[
+  {
+    "userId": "admin",
+    "messages": [
+      {
+        "id": "a2f19d0d-855e-4821-b66f-dc2d7480e9b3",
+        "userId": "admin",
+        "message": "What can you do",
+        "isAI": false,
+        "created_at": "2025-08-18T22:24:17.029Z"
+      },
+      {
+        "id": "92e23838-0632-43c5-aff5-e6878a82c959",
+        "userId": "admin",
+        "message": "Market volatility creates the best arbitrage opportunities. Stay alert for price differences!",
+        "isAI": true,
+        "created_at": "2025-08-18T22:24:18.530Z"
+      },
+      {
+        "id": "e74433ee-d0cf-4856-b83a-e6c8194512aa",
+        "userId": "admin",
+        "message": "What?",
+        "isAI": false,
+        "created_at": "2025-08-18T22:24:37.601Z"
+      },
+      {
+        "id": "e8d8310d-c178-424d-8f3b-d7c486dc6bcc",
+        "userId": "admin",
+        "message": "Want to know about the latest arbitrage opportunities? I can help you spot the best ones!",
+        "isAI": true,
+        "created_at": "2025-08-18T22:24:39.101Z"
+      },
+      {
+        "id": "2ba32918-4e16-47e1-a36e-7c34ceceba48",
+        "userId": "admin",
+        "message": "Hi",
+        "isAI": false,
+        "created_at": "2025-08-18T22:28:42.397Z"
+      },
+      {
+        "id": "f2f0dbaf-c43c-4342-8f07-a45a9c46a524",
+        "userId": "admin",
+        "message": "Hi! Great to see you here! I'm excited to help you with your crypto arbitrage journey. What's on your mind?",
+        "isAI": true,
+        "created_at": "2025-08-18T22:28:43.897Z"
+      },
+      {
+        "id": "90903c92-41f3-4213-8e6c-b2435c2ecf6f",
+        "userId": "admin",
+        "message": "Hi",
+        "isAI": false,
+        "created_at": "2025-08-18T22:31:52.987Z"
+      },
+      {
+        "id": "7091005a-e7e5-412b-9e9a-eee2a3f7900d",
+        "userId": "admin",
+        "message": "Hey! Welcome to the future of crypto trading! I'm here to make your experience amazing. How can I help?",
+        "isAI": true,
+        "created_at": "2025-08-18T22:31:54.487Z"
+      }
+    ],
+    "last_activity": "2025-08-18T22:31:54.487Z"
+  }
+]

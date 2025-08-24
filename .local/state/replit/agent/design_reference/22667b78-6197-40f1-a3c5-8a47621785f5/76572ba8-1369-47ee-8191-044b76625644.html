@@ -1,0 +1,1317 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TradePilot - AI-Powered Crypto Arbitrage Trading Platform</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                colors: {
+                    'crypto-dark': '#0B1426',
+                    'crypto-card': '#1A1D29',
+                    'crypto-blue': '#2563EB',
+                    'crypto-green': '#10B981',
+                    'profit-green': '#059669',
+                    'loss-red': '#DC2626'
+                },
+                fontFamily: {
+                    'inter': ['Inter', 'sans-serif']
+                },
+                backgroundImage: {
+                    'crypto-gradient': 'linear-gradient(135deg, #2563EB 0%, #10B981 100%)',
+                    'dark-gradient': 'linear-gradient(135deg, #0B1426 0%, #1A1D29 100%)'
+                }
+            }
+        },
+        darkMode: 'class'
+    };
+    </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .animate-pulse-slow { animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+        .profit-flash { animation: profitFlash 1s ease-in-out; }
+        @keyframes profitFlash { 0%, 100% { background-color: transparent; } 50% { background-color: rgba(16, 185, 129, 0.1); } }
+    </style>
+</head>
+<body class="bg-crypto-dark text-white min-h-screen">
+
+    <!-- Navigation Overlay for Mobile -->
+    <div id="mobile-menu" class="fixed inset-0 z-50 bg-black bg-opacity-50 hidden">
+        <div class="fixed inset-y-0 left-0 w-64 bg-crypto-card border-r border-gray-700">
+            <div class="p-4">
+                <div class="flex items-center justify-between">
+                    <h2 class="text-xl font-bold bg-crypto-gradient bg-clip-text text-transparent">TradePilot</h2>
+                    <button onclick="closeMobileMenu()" class="text-gray-400 hover:text-white">
+                        <i data-lucide="x" class="w-6 h-6"></i>
+                    </button>
+                </div>
+                <nav class="mt-8 space-y-4">
+                    <a href="#dashboard" class="flex items-center space-x-3 px-3 py-2 rounded-lg bg-crypto-blue text-white">
+                        <i data-lucide="layout-dashboard" class="w-5 h-5"></i>
+                        <span>Dashboard</span>
+                    </a>
+                    <a href="#arbitrage" class="flex items-center space-x-3 px-3 py-2 rounded-lg text-gray-300 hover:bg-gray-700">
+                        <i data-lucide="trending-up" class="w-5 h-5"></i>
+                        <span>Arbitrage Feed</span>
+                    </a>
+                    <a href="#plans" class="flex items-center space-x-3 px-3 py-2 rounded-lg text-gray-300 hover:bg-gray-700">
+                        <i data-lucide="zap" class="w-5 h-5"></i>
+                        <span>AI Plans</span>
+                    </a>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <!-- Landing Page -->
+    <section id="landing" class="min-h-screen bg-dark-gradient">
+        <!-- Header -->
+        <header class="relative z-10 px-6 py-4">
+            <div class="max-w-7xl mx-auto flex items-center justify-between">
+                <div class="flex items-center space-x-2">
+                    <div class="w-8 h-8 rounded-lg bg-crypto-gradient flex items-center justify-center">
+                        <i data-lucide="zap" class="w-5 h-5 text-white"></i>
+                    </div>
+                    <span class="text-2xl font-bold text-white">TradePilot</span>
+                </div>
+                <div class="hidden md:flex items-center space-x-6">
+                    <a href="#features" class="text-gray-300 hover:text-white transition-colors">Features</a>
+                    <a href="#pricing" class="text-gray-300 hover:text-white transition-colors">Pricing</a>
+                    <a href="#contact" class="text-gray-300 hover:text-white transition-colors">Contact</a>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button onclick="showLogin()" class="text-gray-300 hover:text-white font-medium">Login</button>
+                    <button onclick="showRegister()" class="px-6 py-2 bg-crypto-gradient rounded-lg font-medium hover:opacity-90 transition-opacity">Sign Up</button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Hero Section -->
+        <div class="relative px-6 pt-20 pb-32">
+            <div class="max-w-7xl mx-auto text-center">
+                <div class="mb-8">
+                    <span class="inline-flex items-center px-4 py-2 rounded-full bg-crypto-blue bg-opacity-20 text-crypto-blue text-sm font-medium border border-crypto-blue border-opacity-30">
+                        <i data-lucide="sparkles" class="w-4 h-4 mr-2"></i>
+                        AI-Powered Trading Technology
+                    </span>
+                </div>
+                <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold mb-8 leading-tight">
+                    <span class="text-white">Maximize Your</span><br>
+                    <span class="bg-crypto-gradient bg-clip-text text-transparent">Crypto Profits</span>
+                </h1>
+                <p class="text-xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed">
+                    Advanced AI algorithms identify arbitrage opportunities across 50+ exchanges, 
+                    generating consistent returns through automated trading strategies.
+                </p>
+                
+                <!-- Stats -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+                    <div class="text-center">
+                        <div class="text-4xl font-bold text-crypto-green mb-2">24.7%</div>
+                        <div class="text-gray-400">Average Monthly Return</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-4xl font-bold text-crypto-blue mb-2">$12M+</div>
+                        <div class="text-gray-400">Total Volume Traded</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-4xl font-bold text-white mb-2">5,234</div>
+                        <div class="text-gray-400">Active Traders</div>
+                    </div>
+                </div>
+
+                <button onclick="showRegister()" class="px-12 py-4 bg-crypto-gradient rounded-lg text-lg font-semibold hover:opacity-90 transition-all transform hover:scale-105">
+                    Start Trading Now
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Authentication Modal -->
+    <div id="auth-modal" class="fixed inset-0 z-50 bg-black bg-opacity-50 hidden flex items-center justify-center p-4">
+        <div class="bg-crypto-card rounded-xl p-8 w-full max-w-md border border-gray-700">
+            <!-- Login Form -->
+            <div id="login-form" class="hidden">
+                <div class="text-center mb-8">
+                    <h2 class="text-2xl font-bold text-white mb-2">Welcome Back</h2>
+                    <p class="text-gray-400">Sign in to your TradePilot account</p>
+                </div>
+                <form class="space-y-6">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-300 mb-2">Email</label>
+                        <input type="email" class="w-full px-4 py-3 bg-crypto-dark border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:border-crypto-blue focus:outline-none" placeholder="Enter your email">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-300 mb-2">Password</label>
+                        <input type="password" class="w-full px-4 py-3 bg-crypto-dark border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:border-crypto-blue focus:outline-none" placeholder="Enter your password">
+                    </div>
+                    <button type="button" onclick="showDashboard()" class="w-full py-3 bg-crypto-gradient rounded-lg font-semibold hover:opacity-90 transition-opacity">
+                        Sign In
+                    </button>
+                </form>
+                <div class="mt-6 text-center">
+                    <p class="text-gray-400">Don't have an account? 
+                        <button onclick="showRegisterForm()" class="text-crypto-blue hover:underline">Sign up</button>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Register Form -->
+            <div id="register-form" class="hidden">
+                <div class="text-center mb-8">
+                    <h2 class="text-2xl font-bold text-white mb-2">Create Account</h2>
+                    <p class="text-gray-400">Join thousands of successful traders</p>
+                </div>
+                <form class="space-y-6">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-300 mb-2">Username</label>
+                        <input type="text" class="w-full px-4 py-3 bg-crypto-dark border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:border-crypto-blue focus:outline-none" placeholder="Choose a username">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-300 mb-2">Email</label>
+                        <input type="email" class="w-full px-4 py-3 bg-crypto-dark border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:border-crypto-blue focus:outline-none" placeholder="Enter your email">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-300 mb-2">Password</label>
+                        <input type="password" class="w-full px-4 py-3 bg-crypto-dark border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:border-crypto-blue focus:outline-none" placeholder="Create a strong password">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-300 mb-2">Confirm Password</label>
+                        <input type="password" class="w-full px-4 py-3 bg-crypto-dark border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:border-crypto-blue focus:outline-none" placeholder="Confirm your password">
+                    </div>
+                    <button type="button" onclick="showDashboard()" class="w-full py-3 bg-crypto-gradient rounded-lg font-semibold hover:opacity-90 transition-opacity">
+                        Create Account
+                    </button>
+                </form>
+                <div class="mt-6 text-center">
+                    <p class="text-gray-400">Already have an account? 
+                        <button onclick="showLoginForm()" class="text-crypto-blue hover:underline">Sign in</button>
+                    </p>
+                </div>
+            </div>
+
+            <button onclick="closeAuthModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white">
+                <i data-lucide="x" class="w-6 h-6"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Dashboard Section -->
+    <section id="dashboard" class="min-h-screen bg-crypto-dark hidden">
+        <!-- Top Navigation -->
+        <header class="bg-crypto-card border-b border-gray-700 px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-4">
+                    <button class="md:hidden" onclick="openMobileMenu()">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                    <div class="flex items-center space-x-2">
+                        <div class="w-8 h-8 rounded-lg bg-crypto-gradient flex items-center justify-center">
+                            <i data-lucide="zap" class="w-5 h-5 text-white"></i>
+                        </div>
+                        <span class="text-xl font-bold">TradePilot</span>
+                    </div>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-6">
+                    <div class="flex items-center space-x-2 text-sm">
+                        <div class="w-3 h-3 rounded-full bg-crypto-green animate-pulse"></div>
+                        <span class="text-gray-300">Live Markets</span>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <div class="w-8 h-8 rounded-full bg-crypto-blue flex items-center justify-center">
+                            <span class="text-sm font-medium">JD</span>
+                        </div>
+                        <span class="text-gray-300">John Doe</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="flex">
+            <!-- Sidebar - Desktop -->
+            <aside class="hidden md:block w-64 bg-crypto-card border-r border-gray-700 h-screen">
+                <nav class="p-6 space-y-2">
+                    <a href="#dashboard" class="flex items-center space-x-3 px-4 py-3 rounded-lg bg-crypto-blue text-white">
+                        <i data-lucide="layout-dashboard" class="w-5 h-5"></i>
+                        <span>Dashboard</span>
+                    </a>
+                    <a href="#arbitrage" onclick="showArbitrageFeed()" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-300 hover:bg-gray-700 transition-colors">
+                        <i data-lucide="trending-up" class="w-5 h-5"></i>
+                        <span>Arbitrage Feed</span>
+                    </a>
+                    <a href="#plans" onclick="showInvestmentPlans()" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-300 hover:bg-gray-700 transition-colors">
+                        <i data-lucide="zap" class="w-5 h-5"></i>
+                        <span>AI Plans</span>
+                    </a>
+                    <a href="#deposit" onclick="showDeposit()" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-300 hover:bg-gray-700 transition-colors">
+                        <i data-lucide="plus-circle" class="w-5 h-5"></i>
+                        <span>Deposit</span>
+                    </a>
+                    <a href="#withdraw" onclick="showWithdraw()" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-300 hover:bg-gray-700 transition-colors">
+                        <i data-lucide="minus-circle" class="w-5 h-5"></i>
+                        <span>Withdraw</span>
+                    </a>
+                    <a href="#messages" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-300 hover:bg-gray-700 transition-colors">
+                        <i data-lucide="mail" class="w-5 h-5"></i>
+                        <span>Messages</span>
+                        <span class="bg-red-500 text-white text-xs px-2 py-1 rounded-full">2</span>
+                    </a>
+                    <a href="#referrals" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-300 hover:bg-gray-700 transition-colors">
+                        <i data-lucide="users" class="w-5 h-5"></i>
+                        <span>Referrals</span>
+                    </a>
+                    <a href="#settings" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-300 hover:bg-gray-700 transition-colors">
+                        <i data-lucide="settings" class="w-5 h-5"></i>
+                        <span>Settings</span>
+                    </a>
+                </nav>
+                <div class="absolute bottom-6 left-6 right-6">
+                    <button onclick="showAdminPanel()" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-300 hover:bg-red-900 transition-colors w-full">
+                        <i data-lucide="shield" class="w-5 h-5"></i>
+                        <span>Admin Panel</span>
+                    </button>
+                </div>
+            </aside>
+
+            <!-- Main Content -->
+            <main class="flex-1 p-6 overflow-y-auto">
+                <!-- Dashboard Content -->
+                <div id="dashboard-content">
+                    <!-- Balance Overview -->
+                    <div class="mb-8">
+                        <h1 class="text-3xl font-bold mb-6">Dashboard</h1>
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                            <div class="bg-crypto-card rounded-xl p-6 border border-gray-700">
+                                <div class="flex items-center justify-between mb-4">
+                                    <h3 class="text-sm font-medium text-gray-400">Total Balance</h3>
+                                    <i data-lucide="dollar-sign" class="w-5 h-5 text-crypto-green"></i>
+                                </div>
+                                <div class="text-2xl font-bold text-white mb-2">$12,847.92</div>
+                                <div class="text-sm text-crypto-green">+8.24% today</div>
+                            </div>
+                            
+                            <div class="bg-crypto-card rounded-xl p-6 border border-gray-700">
+                                <div class="flex items-center justify-between mb-4">
+                                    <h3 class="text-sm font-medium text-gray-400">Active Plans</h3>
+                                    <i data-lucide="zap" class="w-5 h-5 text-crypto-blue"></i>
+                                </div>
+                                <div class="text-2xl font-bold text-white mb-2">3</div>
+                                <div class="text-sm text-gray-400">Pro, Elite, Premium</div>
+                            </div>
+                            
+                            <div class="bg-crypto-card rounded-xl p-6 border border-gray-700">
+                                <div class="flex items-center justify-between mb-4">
+                                    <h3 class="text-sm font-medium text-gray-400">Today's Profit</h3>
+                                    <i data-lucide="trending-up" class="w-5 h-5 text-crypto-green"></i>
+                                </div>
+                                <div class="text-2xl font-bold text-crypto-green mb-2">$1,058.32</div>
+                                <div class="text-sm text-crypto-green">+24.7% increase</div>
+                            </div>
+                            
+                            <div class="bg-crypto-card rounded-xl p-6 border border-gray-700">
+                                <div class="flex items-center justify-between mb-4">
+                                    <h3 class="text-sm font-medium text-gray-400">Referral Earnings</h3>
+                                    <i data-lucide="users" class="w-5 h-5 text-yellow-500"></i>
+                                </div>
+                                <div class="text-2xl font-bold text-white mb-2">$342.18</div>
+                                <div class="text-sm text-gray-400">From 8 referrals</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Live Arbitrage Preview -->
+                    <div class="mb-8">
+                        <div class="flex items-center justify-between mb-6">
+                            <h2 class="text-xl font-semibold">Live Arbitrage Opportunities</h2>
+                            <button onclick="showArbitrageFeed()" class="text-crypto-blue hover:underline text-sm">View All</button>
+                        </div>
+                        <div class="bg-crypto-card rounded-xl border border-gray-700 overflow-hidden">
+                            <div class="p-6">
+                                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                                    <div class="profit-flash rounded-lg p-4 border border-crypto-green border-opacity-20">
+                                        <div class="flex items-center justify-between mb-3">
+                                            <div class="flex items-center space-x-3">
+                                                <!-- Bitcoin logo placeholder -->
+                                                <div class="w-8 h-8 rounded-full bg-orange-500 flex items-center justify-center">
+                                                    <span class="text-white font-bold text-sm">₿</span>
+                                                </div>
+                                                <span class="font-semibold">BTC/USDT</span>
+                                            </div>
+                                            <div class="text-crypto-green font-semibold">+2.34%</div>
+                                        </div>
+                                        <div class="text-sm text-gray-400 mb-2">Binance → Coinbase</div>
+                                        <div class="text-lg font-bold">$43,856.72</div>
+                                    </div>
+                                    
+                                    <div class="rounded-lg p-4 border border-gray-700">
+                                        <div class="flex items-center justify-between mb-3">
+                                            <div class="flex items-center space-x-3">
+                                                <!-- Ethereum logo placeholder -->
+                                                <div class="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center">
+                                                    <span class="text-white font-bold text-sm">Ξ</span>
+                                                </div>
+                                                <span class="font-semibold">ETH/USDT</span>
+                                            </div>
+                                            <div class="text-crypto-green font-semibold">+1.87%</div>
+                                        </div>
+                                        <div class="text-sm text-gray-400 mb-2">Kraken → OKEx</div>
+                                        <div class="text-lg font-bold">$2,634.91</div>
+                                    </div>
+                                    
+                                    <div class="rounded-lg p-4 border border-gray-700">
+                                        <div class="flex items-center justify-between mb-3">
+                                            <div class="flex items-center space-x-3">
+                                                <!-- ADA logo placeholder -->
+                                                <div class="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center">
+                                                    <span class="text-white font-bold text-sm">₳</span>
+                                                </div>
+                                                <span class="font-semibold">ADA/USDT</span>
+                                            </div>
+                                            <div class="text-crypto-green font-semibold">+3.12%</div>
+                                        </div>
+                                        <div class="text-sm text-gray-400 mb-2">Huobi → Bitfinex</div>
+                                        <div class="text-lg font-bold">$0.4823</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Active Investment Plans -->
+                    <div>
+                        <h2 class="text-xl font-semibold mb-6">Active Investment Plans</h2>
+                        <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
+                            <div class="bg-crypto-card rounded-xl p-6 border border-gray-700">
+                                <div class="flex items-center justify-between mb-4">
+                                    <h3 class="font-semibold">Pro Plan</h3>
+                                    <span class="bg-crypto-blue text-white text-xs px-2 py-1 rounded-full">Active</span>
+                                </div>
+                                <div class="space-y-3">
+                                    <div class="flex justify-between">
+                                        <span class="text-gray-400">Investment</span>
+                                        <span class="font-semibold">$5,000</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span class="text-gray-400">Daily Return</span>
+                                        <span class="text-crypto-green font-semibold">2.1%</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span class="text-gray-400">Duration</span>
+                                        <span>12 days remaining</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span class="text-gray-400">Total Earned</span>
+                                        <span class="text-crypto-green font-semibold">$1,847.22</span>
+                                    </div>
+                                </div>
+                                <div class="mt-4 bg-gray-700 rounded-full h-2">
+                                    <div class="bg-crypto-gradient h-2 rounded-full" style="width: 65%"></div>
+                                </div>
+                            </div>
+
+                            <div class="bg-crypto-card rounded-xl p-6 border border-gray-700">
+                                <div class="flex items-center justify-between mb-4">
+                                    <h3 class="font-semibold">Elite Plan</h3>
+                                    <span class="bg-crypto-green text-white text-xs px-2 py-1 rounded-full">Active</span>
+                                </div>
+                                <div class="space-y-3">
+                                    <div class="flex justify-between">
+                                        <span class="text-gray-400">Investment</span>
+                                        <span class="font-semibold">$10,000</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span class="text-gray-400">Daily Return</span>
+                                        <span class="text-crypto-green font-semibold">3.2%</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span class="text-gray-400">Duration</span>
+                                        <span>8 days remaining</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span class="text-gray-400">Total Earned</span>
+                                        <span class="text-crypto-green font-semibold">$2,134.56</span>
+                                    </div>
+                                </div>
+                                <div class="mt-4 bg-gray-700 rounded-full h-2">
+                                    <div class="bg-crypto-gradient h-2 rounded-full" style="width: 72%"></div>
+                                </div>
+                            </div>
+
+                            <div class="bg-crypto-card rounded-xl p-6 border border-gray-700">
+                                <div class="flex items-center justify-between mb-4">
+                                    <h3 class="font-semibold">Premium Plan</h3>
+                                    <span class="bg-yellow-500 text-black text-xs px-2 py-1 rounded-full">Premium</span>
+                                </div>
+                                <div class="space-y-3">
+                                    <div class="flex justify-between">
+                                        <span class="text-gray-400">Investment</span>
+                                        <span class="font-semibold">$25,000</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span class="text-gray-400">Daily Return</span>
+                                        <span class="text-crypto-green font-semibold">4.7%</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span class="text-gray-400">Duration</span>
+                                        <span>23 days remaining</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span class="text-gray-400">Total Earned</span>
+                                        <span class="text-crypto-green font-semibold">$8,943.12</span>
+                                    </div>
+                                </div>
+                                <div class="mt-4 bg-gray-700 rounded-full h-2">
+                                    <div class="bg-crypto-gradient h-2 rounded-full" style="width: 28%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Arbitrage Feed Content -->
+                <div id="arbitrage-content" class="hidden">
+                    <div class="flex items-center justify-between mb-6">
+                        <h1 class="text-3xl font-bold">Live Arbitrage Feed</h1>
+                        <div class="flex items-center space-x-2 text-sm">
+                            <div class="w-3 h-3 rounded-full bg-crypto-green animate-pulse"></div>
+                            <span class="text-gray-300">Auto-updating every 4 seconds</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-crypto-card rounded-xl border border-gray-700 overflow-hidden">
+                        <div class="p-6">
+                            <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4">
+                                <!-- Arbitrage opportunities will be populated here -->
+                                <div class="profit-flash border border-crypto-green border-opacity-30 rounded-lg p-4 bg-crypto-green bg-opacity-5">
+                                    <div class="flex items-center justify-between mb-3">
+                                        <div class="flex items-center space-x-3">
+                                            <div class="w-10 h-10 rounded-full bg-orange-500 flex items-center justify-center">
+                                                <span class="text-white font-bold">₿</span>
+                                            </div>
+                                            <div>
+                                                <div class="font-semibold">BTC/USDT</div>
+                                                <div class="text-sm text-gray-400">Bitcoin</div>
+                                            </div>
+                                        </div>
+                                        <div class="text-right">
+                                            <div class="text-crypto-green font-bold text-lg">+2.89%</div>
+                                            <div class="text-sm text-gray-400">Profit</div>
+                                        </div>
+                                    </div>
+                                    <div class="grid grid-cols-2 gap-4 text-sm">
+                                        <div>
+                                            <div class="text-gray-400">Buy from</div>
+                                            <div class="font-semibold">Binance</div>
+                                            <div class="text-white">$43,847.12</div>
+                                        </div>
+                                        <div>
+                                            <div class="text-gray-400">Sell to</div>
+                                            <div class="font-semibold">Coinbase</div>
+                                            <div class="text-crypto-green">$45,116.43</div>
+                                        </div>
+                                    </div>
+                                    <div class="mt-4 pt-4 border-t border-gray-600">
+                                        <div class="flex justify-between text-sm">
+                                            <span class="text-gray-400">Volume Available</span>
+                                            <span class="text-white">2.34 BTC</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="border border-gray-700 rounded-lg p-4">
+                                    <div class="flex items-center justify-between mb-3">
+                                        <div class="flex items-center space-x-3">
+                                            <div class="w-10 h-10 rounded-full bg-blue-500 flex items-center justify-center">
+                                                <span class="text-white font-bold">Ξ</span>
+                                            </div>
+                                            <div>
+                                                <div class="font-semibold">ETH/USDT</div>
+                                                <div class="text-sm text-gray-400">Ethereum</div>
+                                            </div>
+                                        </div>
+                                        <div class="text-right">
+                                            <div class="text-crypto-green font-bold text-lg">+1.94%</div>
+                                            <div class="text-sm text-gray-400">Profit</div>
+                                        </div>
+                                    </div>
+                                    <div class="grid grid-cols-2 gap-4 text-sm">
+                                        <div>
+                                            <div class="text-gray-400">Buy from</div>
+                                            <div class="font-semibold">Kraken</div>
+                                            <div class="text-white">$2,634.91</div>
+                                        </div>
+                                        <div>
+                                            <div class="text-gray-400">Sell to</div>
+                                            <div class="font-semibold">OKEx</div>
+                                            <div class="text-crypto-green">$2,686.07</div>
+                                        </div>
+                                    </div>
+                                    <div class="mt-4 pt-4 border-t border-gray-600">
+                                        <div class="flex justify-between text-sm">
+                                            <span class="text-gray-400">Volume Available</span>
+                                            <span class="text-white">45.7 ETH</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="border border-gray-700 rounded-lg p-4">
+                                    <div class="flex items-center justify-between mb-3">
+                                        <div class="flex items-center space-x-3">
+                                            <div class="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center">
+                                                <span class="text-white font-bold">₳</span>
+                                            </div>
+                                            <div>
+                                                <div class="font-semibold">ADA/USDT</div>
+                                                <div class="text-sm text-gray-400">Cardano</div>
+                                            </div>
+                                        </div>
+                                        <div class="text-right">
+                                            <div class="text-crypto-green font-bold text-lg">+3.47%</div>
+                                            <div class="text-sm text-gray-400">Profit</div>
+                                        </div>
+                                    </div>
+                                    <div class="grid grid-cols-2 gap-4 text-sm">
+                                        <div>
+                                            <div class="text-gray-400">Buy from</div>
+                                            <div class="font-semibold">Huobi</div>
+                                            <div class="text-white">$0.4823</div>
+                                        </div>
+                                        <div>
+                                            <div class="text-gray-400">Sell to</div>
+                                            <div class="font-semibold">Bitfinex</div>
+                                            <div class="text-crypto-green">$0.4990</div>
+                                        </div>
+                                    </div>
+                                    <div class="mt-4 pt-4 border-t border-gray-600">
+                                        <div class="flex justify-between text-sm">
+                                            <span class="text-gray-400">Volume Available</span>
+                                            <span class="text-white">15,240 ADA</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Investment Plans Content -->
+                <div id="plans-content" class="hidden">
+                    <h1 class="text-3xl font-bold mb-6">AI Investment Plans</h1>
+                    
+                    <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
+                        <!-- Starter Plan -->
+                        <div class="bg-crypto-card rounded-xl p-6 border border-gray-700">
+                            <div class="text-center mb-6">
+                                <div class="w-16 h-16 bg-crypto-blue bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                                    <i data-lucide="play" class="w-8 h-8 text-crypto-blue"></i>
+                                </div>
+                                <h3 class="text-xl font-bold mb-2">Starter Plan</h3>
+                                <p class="text-gray-400">Perfect for beginners</p>
+                            </div>
+                            
+                            <div class="space-y-4 mb-6">
+                                <div class="flex justify-between">
+                                    <span class="text-gray-400">Daily Return</span>
+                                    <span class="text-crypto-green font-semibold">1.8%</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-400">Duration</span>
+                                    <span>15 days</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-400">Minimum</span>
+                                    <span>$50</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-400">Maximum</span>
+                                    <span>$1,000</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-400">Total Return</span>
+                                    <span class="text-crypto-green font-semibold">127%</span>
+                                </div>
+                            </div>
+                            
+                            <button class="w-full py-3 bg-crypto-blue rounded-lg font-semibold hover:opacity-90 transition-opacity">
+                                Invest Now
+                            </button>
+                        </div>
+
+                        <!-- Pro Plan -->
+                        <div class="bg-crypto-card rounded-xl p-6 border border-crypto-green relative overflow-hidden">
+                            <div class="absolute top-0 right-0 bg-crypto-green text-white text-xs px-3 py-1">Popular</div>
+                            <div class="text-center mb-6">
+                                <div class="w-16 h-16 bg-crypto-green bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                                    <i data-lucide="zap" class="w-8 h-8 text-crypto-green"></i>
+                                </div>
+                                <h3 class="text-xl font-bold mb-2">Pro Plan</h3>
+                                <p class="text-gray-400">Most popular choice</p>
+                            </div>
+                            
+                            <div class="space-y-4 mb-6">
+                                <div class="flex justify-between">
+                                    <span class="text-gray-400">Daily Return</span>
+                                    <span class="text-crypto-green font-semibold">2.5%</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-400">Duration</span>
+                                    <span>20 days</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-400">Minimum</span>
+                                    <span>$1,000</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-400">Maximum</span>
+                                    <span>$10,000</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-400">Total Return</span>
+                                    <span class="text-crypto-green font-semibold">150%</span>
+                                </div>
+                            </div>
+                            
+                            <button class="w-full py-3 bg-crypto-gradient rounded-lg font-semibold hover:opacity-90 transition-opacity">
+                                Invest Now
+                            </button>
+                        </div>
+
+                        <!-- Elite Plan -->
+                        <div class="bg-crypto-card rounded-xl p-6 border border-yellow-500">
+                            <div class="text-center mb-6">
+                                <div class="w-16 h-16 bg-yellow-500 bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                                    <i data-lucide="crown" class="w-8 h-8 text-yellow-500"></i>
+                                </div>
+                                <h3 class="text-xl font-bold mb-2">Elite Plan</h3>
+                                <p class="text-gray-400">For serious investors</p>
+                            </div>
+                            
+                            <div class="space-y-4 mb-6">
+                                <div class="flex justify-between">
+                                    <span class="text-gray-400">Daily Return</span>
+                                    <span class="text-crypto-green font-semibold">3.8%</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-400">Duration</span>
+                                    <span>30 days</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-400">Minimum</span>
+                                    <span>$10,000</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-400">Maximum</span>
+                                    <span>$50,000</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-400">Total Return</span>
+                                    <span class="text-crypto-green font-semibold">214%</span>
+                                </div>
+                            </div>
+                            
+                            <button class="w-full py-3 bg-yellow-500 text-black rounded-lg font-semibold hover:opacity-90 transition-opacity">
+                                Invest Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Deposit Content -->
+                <div id="deposit-content" class="hidden">
+                    <h1 class="text-3xl font-bold mb-6">Deposit Funds</h1>
+                    
+                    <div class="max-w-2xl">
+                        <div class="bg-crypto-card rounded-xl p-6 border border-gray-700 mb-6">
+                            <h3 class="text-lg font-semibold mb-4">Choose Cryptocurrency</h3>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                                <button onclick="selectCrypto('BTC')" class="crypto-option p-4 border border-gray-600 rounded-lg hover:border-crypto-blue transition-colors" data-crypto="BTC">
+                                    <div class="flex items-center space-x-3">
+                                        <div class="w-10 h-10 rounded-full bg-orange-500 flex items-center justify-center">
+                                            <span class="text-white font-bold">₿</span>
+                                        </div>
+                                        <div class="text-left">
+                                            <div class="font-semibold">Bitcoin</div>
+                                            <div class="text-sm text-gray-400">BTC</div>
+                                        </div>
+                                    </div>
+                                </button>
+                                
+                                <button onclick="selectCrypto('ETH')" class="crypto-option p-4 border border-gray-600 rounded-lg hover:border-crypto-blue transition-colors" data-crypto="ETH">
+                                    <div class="flex items-center space-x-3">
+                                        <div class="w-10 h-10 rounded-full bg-blue-500 flex items-center justify-center">
+                                            <span class="text-white font-bold">Ξ</span>
+                                        </div>
+                                        <div class="text-left">
+                                            <div class="font-semibold">Ethereum</div>
+                                            <div class="text-sm text-gray-400">ETH</div>
+                                        </div>
+                                    </div>
+                                </button>
+                                
+                                <button onclick="selectCrypto('USDT')" class="crypto-option p-4 border border-gray-600 rounded-lg hover:border-crypto-blue transition-colors" data-crypto="USDT">
+                                    <div class="flex items-center space-x-3">
+                                        <div class="w-10 h-10 rounded-full bg-green-500 flex items-center justify-center">
+                                            <span class="text-white font-bold">₮</span>
+                                        </div>
+                                        <div class="text-left">
+                                            <div class="font-semibold">Tether</div>
+                                            <div class="text-sm text-gray-400">USDT-TRC20</div>
+                                        </div>
+                                    </div>
+                                </button>
+                            </div>
+                            
+                            <!-- Deposit Details -->
+                            <div id="deposit-details" class="hidden">
+                                <div class="border-t border-gray-600 pt-6">
+                                    <div class="text-center mb-6">
+                                        <div class="text-lg font-semibold mb-2">Send <span id="selected-crypto">BTC</span> to this address:</div>
+                                        <div class="bg-white p-4 rounded-lg inline-block mb-4">
+                                            <!-- QR Code placeholder -->
+                                            <div class="w-48 h-48 bg-gray-200 flex items-center justify-center text-gray-500">
+                                                QR Code
+                                            </div>
+                                        </div>
+                                        <div class="bg-crypto-dark rounded-lg p-4 mb-4">
+                                            <div class="text-sm text-gray-400 mb-2">Deposit Address:</div>
+                                            <div class="font-mono text-sm break-all" id="deposit-address">bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh</div>
+                                            <button class="mt-2 text-crypto-blue hover:underline text-sm">Copy Address</button>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="space-y-4">
+                                        <div class="flex justify-between">
+                                            <span class="text-gray-400">Minimum Deposit</span>
+                                            <span id="min-deposit">0.001 BTC</span>
+                                        </div>
+                                        <div class="flex justify-between">
+                                            <span class="text-gray-400">Network</span>
+                                            <span id="network">Bitcoin</span>
+                                        </div>
+                                        <div class="flex justify-between">
+                                            <span class="text-gray-400">Confirmations Required</span>
+                                            <span id="confirmations">3</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="mt-6 p-4 bg-yellow-500 bg-opacity-10 border border-yellow-500 border-opacity-30 rounded-lg">
+                                        <div class="flex items-start space-x-3">
+                                            <i data-lucide="alert-triangle" class="w-5 h-5 text-yellow-500 mt-0.5"></i>
+                                            <div class="text-sm">
+                                                <div class="font-semibold text-yellow-500 mb-1">Important Notice</div>
+                                                <div class="text-gray-300">Only send <span id="warning-crypto">BTC</span> to this address. Sending other cryptocurrencies will result in permanent loss.</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Recent Deposits -->
+                        <div class="bg-crypto-card rounded-xl p-6 border border-gray-700">
+                            <h3 class="text-lg font-semibold mb-4">Recent Deposits</h3>
+                            <div class="space-y-3">
+                                <div class="flex items-center justify-between p-3 bg-crypto-dark rounded-lg">
+                                    <div class="flex items-center space-x-3">
+                                        <div class="w-8 h-8 rounded-full bg-orange-500 flex items-center justify-center">
+                                            <span class="text-white font-bold text-sm">₿</span>
+                                        </div>
+                                        <div>
+                                            <div class="font-semibold">0.125 BTC</div>
+                                            <div class="text-sm text-gray-400">Dec 15, 2023 14:32</div>
+                                        </div>
+                                    </div>
+                                    <span class="bg-crypto-green text-white text-xs px-2 py-1 rounded-full">Confirmed</span>
+                                </div>
+                                
+                                <div class="flex items-center justify-between p-3 bg-crypto-dark rounded-lg">
+                                    <div class="flex items-center space-x-3">
+                                        <div class="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center">
+                                            <span class="text-white font-bold text-sm">Ξ</span>
+                                        </div>
+                                        <div>
+                                            <div class="font-semibold">2.45 ETH</div>
+                                            <div class="text-sm text-gray-400">Dec 14, 2023 09:15</div>
+                                        </div>
+                                    </div>
+                                    <span class="bg-yellow-500 text-black text-xs px-2 py-1 rounded-full">Pending (1/3)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Withdraw Content -->
+                <div id="withdraw-content" class="hidden">
+                    <h1 class="text-3xl font-bold mb-6">Withdraw Funds</h1>
+                    
+                    <div class="max-w-2xl">
+                        <!-- Balance Overview -->
+                        <div class="bg-crypto-card rounded-xl p-6 border border-gray-700 mb-6">
+                            <h3 class="text-lg font-semibold mb-4">Available Balance</h3>
+                            <div class="text-3xl font-bold text-crypto-green mb-2">$12,847.92</div>
+                            <div class="text-sm text-gray-400">Ready for withdrawal</div>
+                        </div>
+                        
+                        <!-- Withdrawal Form -->
+                        <div class="bg-crypto-card rounded-xl p-6 border border-gray-700 mb-6">
+                            <h3 class="text-lg font-semibold mb-4">Request Withdrawal</h3>
+                            
+                            <form class="space-y-6">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-300 mb-2">Cryptocurrency</label>
+                                    <select class="w-full px-4 py-3 bg-crypto-dark border border-gray-600 rounded-lg text-white focus:border-crypto-blue focus:outline-none">
+                                        <option value="BTC">Bitcoin (BTC)</option>
+                                        <option value="ETH">Ethereum (ETH)</option>
+                                        <option value="USDT">Tether USDT-TRC20</option>
+                                    </select>
+                                </div>
+                                
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-300 mb-2">Wallet Address</label>
+                                    <input type="text" class="w-full px-4 py-3 bg-crypto-dark border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:border-crypto-blue focus:outline-none" placeholder="Enter your wallet address">
+                                </div>
+                                
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-300 mb-2">Amount (USD)</label>
+                                    <input type="number" class="w-full px-4 py-3 bg-crypto-dark border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:border-crypto-blue focus:outline-none" placeholder="Enter amount">
+                                    <div class="text-sm text-gray-400 mt-2">Minimum withdrawal: $100</div>
+                                </div>
+                                
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-300 mb-2">Network Fee</label>
+                                    <div class="bg-crypto-dark rounded-lg p-3 text-sm">
+                                        <div class="flex justify-between">
+                                            <span class="text-gray-400">Estimated Fee:</span>
+                                            <span class="text-white">$15.00</span>
+                                        </div>
+                                        <div class="flex justify-between mt-1">
+                                            <span class="text-gray-400">You'll receive:</span>
+                                            <span class="text-crypto-green font-semibold">$485.00</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <button type="submit" class="w-full py-3 bg-crypto-gradient rounded-lg font-semibold hover:opacity-90 transition-opacity">
+                                    Request Withdrawal
+                                </button>
+                            </form>
+                        </div>
+                        
+                        <!-- Withdrawal History -->
+                        <div class="bg-crypto-card rounded-xl p-6 border border-gray-700">
+                            <h3 class="text-lg font-semibold mb-4">Withdrawal History</h3>
+                            <div class="space-y-3">
+                                <div class="flex items-center justify-between p-3 bg-crypto-dark rounded-lg">
+                                    <div>
+                                        <div class="font-semibold">$2,500.00</div>
+                                        <div class="text-sm text-gray-400">Dec 12, 2023 - BTC</div>
+                                        <div class="text-xs text-gray-500">bc1qxy2kgdygjrsqtzq2n0yrf2493p83k...</div>
+                                    </div>
+                                    <span class="bg-crypto-green text-white text-xs px-2 py-1 rounded-full">Completed</span>
+                                </div>
+                                
+                                <div class="flex items-center justify-between p-3 bg-crypto-dark rounded-lg">
+                                    <div>
+                                        <div class="font-semibold">$1,200.00</div>
+                                        <div class="text-sm text-gray-400">Dec 10, 2023 - ETH</div>
+                                        <div class="text-xs text-gray-500">0x742d35Cc6634C0532925a3b8D4d...</div>
+                                    </div>
+                                    <span class="bg-yellow-500 text-black text-xs px-2 py-1 rounded-full">Pending</span>
+                                </div>
+                                
+                                <div class="flex items-center justify-between p-3 bg-crypto-dark rounded-lg">
+                                    <div>
+                                        <div class="font-semibold">$800.00</div>
+                                        <div class="text-sm text-gray-400">Dec 8, 2023 - USDT</div>
+                                        <div class="text-xs text-gray-500">TQn9Y2khEsLJW1ChVWFMSMeRDow...</div>
+                                    </div>
+                                    <span class="bg-loss-red text-white text-xs px-2 py-1 rounded-full">Rejected</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Admin Panel Content -->
+                <div id="admin-content" class="hidden">
+                    <div class="flex items-center justify-between mb-6">
+                        <h1 class="text-3xl font-bold text-red-400">Admin Panel</h1>
+                        <div class="flex items-center space-x-2">
+                            <i data-lucide="shield-alert" class="w-5 h-5 text-red-400"></i>
+                            <span class="text-red-400 font-medium">Restricted Access</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Admin Stats -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                        <div class="bg-crypto-card rounded-xl p-6 border border-red-700">
+                            <div class="flex items-center justify-between mb-4">
+                                <h3 class="text-sm font-medium text-gray-400">Total Users</h3>
+                                <i data-lucide="users" class="w-5 h-5 text-red-400"></i>
+                            </div>
+                            <div class="text-2xl font-bold text-white mb-2">5,234</div>
+                            <div class="text-sm text-crypto-green">+124 this month</div>
+                        </div>
+                        
+                        <div class="bg-crypto-card rounded-xl p-6 border border-red-700">
+                            <div class="flex items-center justify-between mb-4">
+                                <h3 class="text-sm font-medium text-gray-400">Pending Withdrawals</h3>
+                                <i data-lucide="clock" class="w-5 h-5 text-yellow-500"></i>
+                            </div>
+                            <div class="text-2xl font-bold text-yellow-500 mb-2">47</div>
+                            <div class="text-sm text-gray-400">Requires approval</div>
+                        </div>
+                        
+                        <div class="bg-crypto-card rounded-xl p-6 border border-red-700">
+                            <div class="flex items-center justify-between mb-4">
+                                <h3 class="text-sm font-medium text-gray-400">Platform Balance</h3>
+                                <i data-lucide="wallet" class="w-5 h-5 text-crypto-green"></i>
+                            </div>
+                            <div class="text-2xl font-bold text-white mb-2">$2.4M</div>
+                            <div class="text-sm text-crypto-green">+8.3% this week</div>
+                        </div>
+                        
+                        <div class="bg-crypto-card rounded-xl p-6 border border-red-700">
+                            <div class="flex items-center justify-between mb-4">
+                                <h3 class="text-sm font-medium text-gray-400">Active Plans</h3>
+                                <i data-lucide="activity" class="w-5 h-5 text-crypto-blue"></i>
+                            </div>
+                            <div class="text-2xl font-bold text-white mb-2">1,847</div>
+                            <div class="text-sm text-gray-400">Currently running</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Admin Actions -->
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        <!-- User Management -->
+                        <div class="bg-crypto-card rounded-xl p-6 border border-gray-700">
+                            <h3 class="text-lg font-semibold mb-4 flex items-center">
+                                <i data-lucide="users" class="w-5 h-5 mr-2"></i>
+                                User Management
+                            </h3>
+                            <div class="space-y-3">
+                                <button class="w-full p-3 text-left bg-crypto-dark rounded-lg hover:bg-gray-600 transition-colors">
+                                    <div class="font-medium">View All Users</div>
+                                    <div class="text-sm text-gray-400">Manage user accounts and balances</div>
+                                </button>
+                                <button class="w-full p-3 text-left bg-crypto-dark rounded-lg hover:bg-gray-600 transition-colors">
+                                    <div class="font-medium">Adjust Balances</div>
+                                    <div class="text-sm text-gray-400">Credit or debit user accounts</div>
+                                </button>
+                                <button class="w-full p-3 text-left bg-crypto-dark rounded-lg hover:bg-gray-600 transition-colors">
+                                    <div class="font-medium">User Restrictions</div>
+                                    <div class="text-sm text-gray-400">Suspend or restrict accounts</div>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Withdrawal Management -->
+                        <div class="bg-crypto-card rounded-xl p-6 border border-gray-700">
+                            <h3 class="text-lg font-semibold mb-4 flex items-center">
+                                <i data-lucide="credit-card" class="w-5 h-5 mr-2"></i>
+                                Withdrawal Management
+                            </h3>
+                            <div class="space-y-3">
+                                <div class="p-3 bg-yellow-500 bg-opacity-10 border border-yellow-500 border-opacity-30 rounded-lg">
+                                    <div class="flex items-center justify-between">
+                                        <div>
+                                            <div class="font-semibold">$2,500 - John Doe</div>
+                                            <div class="text-sm text-gray-400">BTC withdrawal request</div>
+                                        </div>
+                                        <div class="flex space-x-2">
+                                            <button class="px-3 py-1 bg-crypto-green rounded text-sm">Approve</button>
+                                            <button class="px-3 py-1 bg-red-600 rounded text-sm">Reject</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="p-3 bg-yellow-500 bg-opacity-10 border border-yellow-500 border-opacity-30 rounded-lg">
+                                    <div class="flex items-center justify-between">
+                                        <div>
+                                            <div class="font-semibold">$1,200 - Jane Smith</div>
+                                            <div class="text-sm text-gray-400">ETH withdrawal request</div>
+                                        </div>
+                                        <div class="flex space-x-2">
+                                            <button class="px-3 py-1 bg-crypto-green rounded text-sm">Approve</button>
+                                            <button class="px-3 py-1 bg-red-600 rounded text-sm">Reject</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Plan Management -->
+                        <div class="bg-crypto-card rounded-xl p-6 border border-gray-700">
+                            <h3 class="text-lg font-semibold mb-4 flex items-center">
+                                <i data-lucide="zap" class="w-5 h-5 mr-2"></i>
+                                Plan Management
+                            </h3>
+                            <div class="space-y-3">
+                                <button class="w-full p-3 text-left bg-crypto-dark rounded-lg hover:bg-gray-600 transition-colors">
+                                    <div class="font-medium">Create New Plan</div>
+                                    <div class="text-sm text-gray-400">Add new investment plans</div>
+                                </button>
+                                <button class="w-full p-3 text-left bg-crypto-dark rounded-lg hover:bg-gray-600 transition-colors">
+                                    <div class="font-medium">Edit Existing Plans</div>
+                                    <div class="text-sm text-gray-400">Modify rates and durations</div>
+                                </button>
+                                <button class="w-full p-3 text-left bg-crypto-dark rounded-lg hover:bg-gray-600 transition-colors">
+                                    <div class="font-medium">Plan Analytics</div>
+                                    <div class="text-sm text-gray-400">View plan performance data</div>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- System Settings -->
+                        <div class="bg-crypto-card rounded-xl p-6 border border-gray-700">
+                            <h3 class="text-lg font-semibold mb-4 flex items-center">
+                                <i data-lucide="settings" class="w-5 h-5 mr-2"></i>
+                                System Settings
+                            </h3>
+                            <div class="space-y-3">
+                                <button class="w-full p-3 text-left bg-crypto-dark rounded-lg hover:bg-gray-600 transition-colors">
+                                    <div class="font-medium">Wallet Addresses</div>
+                                    <div class="text-sm text-gray-400">Configure deposit wallets</div>
+                                </button>
+                                <button class="w-full p-3 text-left bg-crypto-dark rounded-lg hover:bg-gray-600 transition-colors">
+                                    <div class="font-medium">System Messages</div>
+                                    <div class="text-sm text-gray-400">Broadcast to all users</div>
+                                </button>
+                                <button class="w-full p-3 text-left bg-crypto-dark rounded-lg hover:bg-gray-600 transition-colors">
+                                    <div class="font-medium">Platform Settings</div>
+                                    <div class="text-sm text-gray-400">General configuration</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <!-- Mobile Bottom Navigation -->
+        <nav class="md:hidden fixed bottom-0 left-0 right-0 bg-crypto-card border-t border-gray-700 px-6 py-2">
+            <div class="flex items-center justify-around">
+                <button onclick="showDashboardContent()" class="flex flex-col items-center py-2 text-crypto-blue">
+                    <i data-lucide="layout-dashboard" class="w-5 h-5 mb-1"></i>
+                    <span class="text-xs">Dashboard</span>
+                </button>
+                <button onclick="showDeposit()" class="flex flex-col items-center py-2 text-gray-400">
+                    <i data-lucide="plus-circle" class="w-5 h-5 mb-1"></i>
+                    <span class="text-xs">Deposit</span>
+                </button>
+                <button onclick="showWithdraw()" class="flex flex-col items-center py-2 text-gray-400">
+                    <i data-lucide="minus-circle" class="w-5 h-5 mb-1"></i>
+                    <span class="text-xs">Withdraw</span>
+                </button>
+                <button class="flex flex-col items-center py-2 text-gray-400 relative">
+                    <i data-lucide="mail" class="w-5 h-5 mb-1"></i>
+                    <span class="text-xs">Inbox</span>
+                    <div class="absolute -top-1 -right-1 w-4 h-4 bg-red-500 rounded-full flex items-center justify-center">
+                        <span class="text-white text-xs">2</span>
+                    </div>
+                </button>
+                <button class="flex flex-col items-center py-2 text-gray-400">
+                    <i data-lucide="settings" class="w-5 h-5 mb-1"></i>
+                    <span class="text-xs">Settings</span>
+                </button>
+            </div>
+        </nav>
+    </section>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Authentication functions
+        function showLogin() {
+            document.getElementById('auth-modal').classList.remove('hidden');
+            document.getElementById('login-form').classList.remove('hidden');
+            document.getElementById('register-form').classList.add('hidden');
+        }
+
+        function showRegister() {
+            document.getElementById('auth-modal').classList.remove('hidden');
+            document.getElementById('register-form').classList.remove('hidden');
+            document.getElementById('login-form').classList.add('hidden');
+        }
+
+        function showLoginForm() {
+            document.getElementById('login-form').classList.remove('hidden');
+            document.getElementById('register-form').classList.add('hidden');
+        }
+
+        function showRegisterForm() {
+            document.getElementById('register-form').classList.remove('hidden');
+            document.getElementById('login-form').classList.add('hidden');
+        }
+
+        function closeAuthModal() {
+            document.getElementById('auth-modal').classList.add('hidden');
+        }
+
+        function showDashboard() {
+            document.getElementById('landing').classList.add('hidden');
+            document.getElementById('dashboard').classList.remove('hidden');
+            document.getElementById('auth-modal').classList.add('hidden');
+            showDashboardContent();
+        }
+
+        // Navigation functions
+        function showDashboardContent() {
+            hideAllContent();
+            document.getElementById('dashboard-content').classList.remove('hidden');
+            updateMobileNav('dashboard');
+        }
+
+        function showArbitrageFeed() {
+            hideAllContent();
+            document.getElementById('arbitrage-content').classList.remove('hidden');
+            updateMobileNav('arbitrage');
+        }
+
+        function showInvestmentPlans() {
+            hideAllContent();
+            document.getElementById('plans-content').classList.remove('hidden');
+            updateMobileNav('plans');
+        }
+
+        function showDeposit() {
+            hideAllContent();
+            document.getElementById('deposit-content').classList.remove('hidden');
+            updateMobileNav('deposit');
+        }
+
+        function showWithdraw() {
+            hideAllContent();
+            document.getElementById('withdraw-content').classList.remove('hidden');
+            updateMobileNav('withdraw');
+        }
+
+        function showAdminPanel() {
+            hideAllContent();
+            document.getElementById('admin-content').classList.remove('hidden');
+            updateMobileNav('admin');
+        }
+
+        function hideAllContent() {
+            const contents = ['dashboard-content', 'arbitrage-content', 'plans-content', 'deposit-content', 'withdraw-content', 'admin-content'];
+            contents.forEach(id => {
+                document.getElementById(id).classList.add('hidden');
+            });
+        }
+
+        function updateMobileNav(active) {
+            // TODO: Update mobile navigation active state
+        }
+
+        // Mobile menu functions
+        function openMobileMenu() {
+            document.getElementById('mobile-menu').classList.remove('hidden');
+        }
+
+        function closeMobileMenu() {
+            document.getElementById('mobile-menu').classList.add('hidden');
+        }
+
+        // Deposit functions
+        function selectCrypto(crypto) {
+            // Remove active state from all options
+            document.querySelectorAll('.crypto-option').forEach(option => {
+                option.classList.remove('border-crypto-blue', 'bg-crypto-blue', 'bg-opacity-10');
+                option.classList.add('border-gray-600');
+            });
+            
+            // Add active state to selected option
+            const selectedOption = document.querySelector(`[data-crypto="${crypto}"]`);
+            selectedOption.classList.remove('border-gray-600');
+            selectedOption.classList.add('border-crypto-blue', 'bg-crypto-blue', 'bg-opacity-10');
+            
+            // Show deposit details
+            document.getElementById('deposit-details').classList.remove('hidden');
+            document.getElementById('selected-crypto').textContent = crypto;
+            document.getElementById('warning-crypto').textContent = crypto;
+            
+            // Update deposit information based on selected crypto
+            const depositInfo = {
+                'BTC': {
+                    address: 'bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh',
+                    minDeposit: '0.001 BTC',
+                    network: 'Bitcoin',
+                    confirmations: '3'
+                },
+                'ETH': {
+                    address: '0x742d35Cc6634C0532925a3b8D4dd37f506F5b3f5',
+                    minDeposit: '0.01 ETH',
+                    network: 'Ethereum',
+                    confirmations: '12'
+                },
+                'USDT': {
+                    address: 'TQn9Y2khEsLJW1ChVWFMSMeRDowPjW2vbD',
+                    minDeposit: '10 USDT',
+                    network: 'Tron (TRC-20)',
+                    confirmations: '20'
+                }
+            };
+            
+            const info = depositInfo[crypto];
+            document.getElementById('deposit-address').textContent = info.address;
+            document.getElementById('min-deposit').textContent = info.minDeposit;
+            document.getElementById('network').textContent = info.network;
+            document.getElementById('confirmations').textContent = info.confirmations;
+        }
+
+        // Simulate real-time arbitrage data updates
+        function updateArbitrageData() {
+            // TODO: Implement real-time arbitrage data updates using CoinGecko API
+            // This would fetch live prices and calculate arbitrage opportunities
+            console.log('Updating arbitrage data...');
+        }
+
+        // Start arbitrage data updates when the page loads
+        (function() {
+            setInterval(updateArbitrageData, 4000); // Update every 4 seconds
+        })();
+
+        // Simulate profit flash animation
+        function triggerProfitFlash() {
+            const profitElements = document.querySelectorAll('.profit-flash');
+            profitElements.forEach(element => {
+                element.classList.add('profit-flash');
+                setTimeout(() => {
+                    element.classList.remove('profit-flash');
+                }, 1000);
+            });
+        }
+
+        // Trigger profit flash every 8-12 seconds
+        (function() {
+            setInterval(() => {
+                if (Math.random() > 0.6) {
+                    triggerProfitFlash();
+                }
+            }, Math.random() * 4000 + 8000);
+        })();
+
+        // Close mobile menu when clicking outside
+        document.getElementById('mobile-menu').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeMobileMenu();
+            }
+        });
+
+        // Close auth modal when clicking outside
+        document.getElementById('auth-modal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeAuthModal();
+            }
+        });
+    </script>
+</body>
+</html>

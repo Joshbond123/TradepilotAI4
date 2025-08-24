@@ -1,0 +1,9 @@
+[
+  {
+    "username": "testuser",
+    "email": "test@example.com",
+    "password": "password123",
+    "verificationCode": "32213",
+    "verificationCodeExpires": "2025-08-23T17:07:37.181Z"
+  }
+]

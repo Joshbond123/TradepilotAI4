@@ -1,0 +1,20 @@
+[
+  {
+    "id": "55684f75-5ac6-486a-9035-21eee52a9ffe",
+    "userId": "b4b45930-2de6-4ebb-b3a3-e5cc8d7b1835",
+    "title": "Welcome to TradePilot!",
+    "content": "Welcome to TradePilot! Start your AI arbitrage trading journey today. Make your first deposit to begin earning passive income with our advanced trading algorithms.",
+    "type": "success",
+    "is_read": true,
+    "created_at": "2025-08-16T20:33:16.680Z"
+  },
+  {
+    "id": "0b075ca7-4e00-4d57-84cc-eb57e20c5579",
+    "userId": "2d983f9b-1dac-4aab-a63f-3ad08e557611",
+    "title": "Welcome to TradePilot!",
+    "content": "Welcome to TradePilot! Your account has been verified. Start your AI arbitrage trading journey today. Make your first deposit to begin earning passive income with our advanced trading algorithms.",
+    "type": "success",
+    "is_read": false,
+    "created_at": "2025-08-17T19:45:39.907Z"
+  }
+]

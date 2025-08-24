@@ -848,7 +848,7 @@ export class EmailService {
               </div>
               
               <div class="cta-section">
-                <a href="${dashboardUrl || process.env.REPLIT_APP_DOMAIN || 'https://tradepilot.com'}/dashboard" class="cta-button">
+                <a href="${dashboardUrl || process.env.REPLIT_APP_DOMAIN || 'https://tradepilot-ewpb.onrender.com'}/dashboard" class="cta-button">
                   🚀 Access Your Dashboard
                 </a>
                 <p style="margin-top: 16px; color: #6b7280; font-size: 14px;">
